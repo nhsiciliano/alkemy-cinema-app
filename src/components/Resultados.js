@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import swal from '@sweetalert/with-react';
 
 function Resultados(props) {
-    let token = sessionStorage.getItem('token');
 
     let query = new URLSearchParams(window.location.search);
     let keyword = query.get('keyword');
@@ -30,7 +29,6 @@ function Resultados(props) {
 
     return (
         <>
-            { !token && <Redirect to="/" /> }
             <h2>Buscaste: <em>{keyword}</em></h2>
             {movieResults.length === 0 && <h2 className='col-12 text-danger d-flex justify-content-center align-items-center' 
                 style={{height: "450px"}}>No hay resultados. Intenta con otra palabra.</h2>}

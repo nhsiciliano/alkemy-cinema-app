@@ -1,5 +1,5 @@
 // Libraries
-import { Route, Switch } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from "react"
 
 // Components
@@ -10,9 +10,12 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Resultados from './components/Resultados';
 import Favoritos from './components/Favoritos';
+import { ProtectedRoutes } from './components/protectedRoutes';
+
 
 // Styles
 import './css/app.css';
+
 
 
 
@@ -70,19 +73,19 @@ function App() {
   }
 
   return (
-    <>
-      <Header favourites={favourites} />
-
-      <div className='container mt-3'>
-        <Switch>
-          <Route exact path="/" component={Login} />
-          <Route path="/listado" render={ (props) => <Listado addFavourite={addFavourite} {...props} />} />
-          <Route path="/detalle" component={Detalle} />
-          <Route path="/favoritos" render={ (props) => <Favoritos favourites={favourites} addFavourite={addFavourite} {...props} />} />
-          <Route path="/resultados" render={ (props) => <Resultados favourites={favourites} addFavourite={addFavourite} {...props} />} />
-        </Switch>
-      </div>
-
+    <> 
+        <Header favourites={favourites} />
+        <div className='container mt-2'>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/listado" element={<Listado addFavourite={addFavourite} />} />
+              <Route path="/detalle" element={<Detalle />} />
+              <Route path="/favoritos" element={ <Favoritos favourites={favourites} addFavourite={addFavourite} />} />
+              <Route path="/resultados" element={ <Resultados favourites={favourites} addFavourite={addFavourite} />} />
+            </Route>
+          </Routes>
+          </div>
       <Footer />
     </>
   );

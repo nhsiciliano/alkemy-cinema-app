@@ -1,9 +1,9 @@
 import swal from '@sweetalert/with-react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Buscador() {
 
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const submitHandler = e => {
         e.preventDefault();
@@ -15,7 +15,7 @@ function Buscador() {
             swal(<h2>Escribe al menos 4 caracteres...</h2>)
         } else {
             e.currentTarget.keyword.value = '';
-            history.push(`/resultados?keyword=${keyword}`);
+            navigate(`/resultados?keyword=${keyword}`);
         }
     }
     return (

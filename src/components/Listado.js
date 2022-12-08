@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import swal from '@sweetalert/with-react';
 
 
 
 function Listado(props) {
-    let token = sessionStorage.getItem('token');
 
 
     const [moviesList, setMoviesList] = useState([]);
@@ -29,7 +28,6 @@ function Listado(props) {
 
     return (
         <>
-            { !token && <Redirect to="/" /> }
             <div className='row'>
             {
                 moviesList.map((oneMovie, idx) => {

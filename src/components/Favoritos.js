@@ -1,13 +1,10 @@
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Favoritos(props) {
-
-    let token = sessionStorage.getItem('token');
     
 
     return (
         <>
-            { !token && <Redirect to="/" /> }
             <h2 className="title">Favoritos</h2>
             <div className='row'>
                 { !props.favourites.length && <h2 className='col-12 text-danger d-flex align-items-center justify-content-center' style={{height: "450px"}}>No tienes ninguna pelicula en favoritos</h2>}

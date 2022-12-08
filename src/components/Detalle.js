@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 
 function Detalle() {
-
-    let token = sessionStorage.getItem('token');
 
     let query = new URLSearchParams(window.location.search);
     let movieID = query.get('movieID');
@@ -29,7 +26,6 @@ function Detalle() {
 
     return (
         <>
-        { !token && <Redirect to="/" /> }
         { !movie && <p>Cargando...</p>}
         { movie &&
         <>

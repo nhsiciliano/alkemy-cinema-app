@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import Buscador from './Buscador';
-import Logout from './Logout';
 
 
 
@@ -23,7 +22,6 @@ function Header(props) {
                     </span>
                 </div>
             </div>
-            <Logout />
             <Buscador />
         </nav>
     )
